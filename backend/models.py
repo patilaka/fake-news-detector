@@ -1,14 +1,31 @@
-from sqlalchemy import Column, Integer, String, Text, Float, TIMESTAMP
-from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy.orm import declarative_base
 
-from database import Base
+
+Base = declarative_base()
 
 
 class NewsPrediction(Base):
+
     __tablename__ = "news_predictions"
 
-    id = Column(Integer, primary_key=True, index=True)
-    news_text = Column(Text, nullable=False)
-    prediction = Column(String(10), nullable=False)
-    confidence = Column(Float, nullable=False)
-    created_at = Column(TIMESTAMP, server_default=func.now())
+    id = Column(
+        Integer,
+        primary_key=True,
+        index=True
+    )
+
+    news_text = Column(
+        String,
+        nullable=False
+    )
+
+    prediction = Column(
+        String,
+        nullable=False
+    )
+
+    confidence = Column(
+        Float,
+        nullable=False
+    )
